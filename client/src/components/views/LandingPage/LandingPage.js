@@ -67,7 +67,7 @@ function LandingPage() {
         //console.log('product', product)
         return <Col lg={6} md ={8} xs = {24} key = {index}>
             <Card 
-                cover={<ImageSlider images = {product.images}/>}
+                cover={<a href={`/product/${product._id}`}><ImageSlider images = {product.images}/></a>}
             >
                 <Meta
                     title={product.title}
@@ -101,7 +101,8 @@ function LandingPage() {
     }
     const handleFilters = (filters, catagory) => {
         const newFilters = {...Filters}
-        newFilters[catagory] = filters // checkBox에서 온 1,2,3 -> const Filters의 continents로
+        newFilters[catagory] = filters
+        // checkBox에서 온 1,2,3 -> const Filters의 continents로
         //console.log('filters', filters)
 
         if(catagory == "price") {
