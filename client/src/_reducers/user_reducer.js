@@ -3,7 +3,9 @@ import {
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
-    ADD_To_CART
+    ADD_To_CART,
+    GET_CART_ITEMS,
+    REMOVE_CART_ITEM
 } from '../_actions/types';
  
 
@@ -25,6 +27,18 @@ export default function(state={},action){
                             // users.js -> .send(userInfo.cart) 해당 부분이 payload
                         } 
                     }
+        case GET_CART_ITEMS:
+            return {...state , cartDetail : action.payload}
+            //user_actions -> getCartItems -> return response.data
+        case REMOVE_CART_ITEM:
+            return {
+                ...state,
+                cartDetail: action.payload.productInfo,
+                userData: {
+                    ...state.userData,
+                    cart: action.payload.cart
+                }
+            }
         default:
             return state;
     }
